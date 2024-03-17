@@ -1,0 +1,54 @@
+<section class="user-table">
+	<table class="table-shadow">
+		<tr>
+			<th>Name</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Website</th>
+			<th>Action</th>
+		</tr>
+		<ng-container *ngIf="isLoading">
+			<tr>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td width="230">
+					<button type="button">See User Details</button>
+				</td>
+			</tr>
+			<tr>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td width="230">
+					<button type="button">See User Details</button>
+				</td>
+			</tr>
+			<tr>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td><app-skeleton-loader></app-skeleton-loader></td>
+				<td width="230">
+					<button type="button">See User Details</button>
+				</td>
+			</tr>
+		</ng-container>
+		<ng-container *ngIf="!isLoading && errorMessage">
+			<div>{{ errorMessage }}</div>
+		</ng-container>
+		<ng-container *ngIf="!isLoading && !errorMessage">
+			<tr *ngFor="let user of users">
+				<td>{{ user.name }}</td>
+				<td>{{ user.username }}</td>
+				<td>{{ user.email }}</td>
+				<td>{{ user?.['website'] }}</td>
+				<td width="230">
+					<button type="button" [routerLink]="['/details', user.id]">See User Details</button>
+				</td>
+			</tr>
+		</ng-container>
+	</table>
+</section>

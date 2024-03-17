@@ -1,0 +1,214 @@
+.user-table {
+	max-width: calc(100% - 2em);
+	margin: 1em auto;
+	overflow: hidden;
+	width: 800px;
+}
+
+.table-shadow {
+	box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+}
+
+table {
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+}
+
+table tr:first-child {
+	border-bottom: solid 1px var(--primary-color);
+}
+
+table tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+}
+
+table tr:first-child th:last-child {
+	border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+table td,
+table th {
+	padding: 10px;
+}
+
+td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+th {
+	font-weight: 600;
+	font-weight: bold;
+}
+
+tr:has(:not(th)):hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+tr:nth-child(2n) {
+	background-color: white;
+}
+
+tr:nth-child(2n+1) {
+	background-color: var(--accent-color);
+}
+
+button {
+	padding: 10px;
+	border: solid 1px var(--primary-color);
+	background: var(--primary-color);
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+
+	table {
+		border: 1px solid var(--accent-color);
+	}
+
+	table,
+	tr,
+	td {
+		display: block;
+	}
+
+	td {
+		clear: both;
+		padding: 4px 20px 4px 90px;
+		position: relative;
+		text-align: left;
+		margin-left: 150px;
+	}
+
+	td:not(:last-child):before {
+		color: var(--primary-color);
+		content: '';
+		display: block;
+		left: -25%;
+		position: absolute;
+	}
+
+	td:last-child {
+		margin-left: 0;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	td:nth-child(1):before {
+		content: 'Name:';
+	}
+
+	td:nth-child(2):before {
+		content: 'Username:';
+	}
+
+	td:nth-child(3):before {
+		content: 'Email:';
+	}
+
+	td:nth-child(4):before {
+		content: 'Website:';
+	}
+
+	tr {
+		padding: 10px 0;
+		position: relative;
+	}
+
+	tr:first-child {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	table {
+		border: none;
+	}
+
+	td {
+		&:first-child {
+			margin-left: 0;
+			background-color: white;
+			border-bottom: 1px solid var(--accent-color);
+			border-radius: 10px 10px 0 0;
+			position: relative;
+			top: 0;
+			transform: translateY(0);
+			text-align: center;
+			text-transform: uppercase;
+			font-size: 32px;
+			font-weight: 600;
+		}
+
+		&:last-child {
+			margin: 0;
+			padding: 5px 0 0 0 !important;
+			width: 100%;
+		}
+
+		&:not(:first-child) {
+
+			&:not(:last-child) {
+				margin: 0;
+				padding: 5px 1em;
+			}
+			
+			&:before {
+				font-size: .8em;
+				padding-top: 0.3em;
+				position: relative;
+				left: 0;
+			}
+		}
+
+	}
+
+	td:nth-child(1):before {
+		content: '';
+	}
+
+	table tr:last-child td:first-child {
+		border-bottom-left-radius: 0px;
+	}
+	
+
+	tr {
+		background-color: white !important;
+		border: 1px solid var(--accent-color);
+		border-radius: 10px;
+		margin: 0.5rem 0;
+		padding: 0;
+	}
+
+	button {
+		width: 100%;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+
+	tr:nth-child(2n) td {
+		background-color: white;
+	}
+	
+	tr:nth-child(2n+1) td {
+		background-color: var(--accent-color);
+		&:first-child {
+			border-bottom: 1px solid white;
+		}
+	}
+
+	.table-shadow {
+		box-shadow: none;
+	}
+}
