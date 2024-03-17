@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
+import { UserListComponent } from './users-list/users-list.component';
 
 @Component({
   selector: 'app-root',
