@@ -15,4 +15,8 @@ export class UserService {
     return await allUsers.json() ?? [];
   }
 
+  async getUserById(id: number): Promise<User | undefined> {
+    const userById = await fetch(this.baseUrl + `/${id}`)
+    return await userById.json() ?? {}
+  }
 }
