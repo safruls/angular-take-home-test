@@ -1,0 +1,81 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: calc(100% - 2em);
+  margin: 1em auto;
+  border-radius: 10px;
+  max-width: 800px;
+  /* text-align: center; */
+}
+
+.user-description, .user-company {
+  padding: 0 1em;
+  width: 50%;
+}
+
+.user-company {
+  border-left: 1px solid var(--accent-color);
+}
+
+.user-heading {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--accent-color);
+  text-transform: uppercase;
+}
+
+label.user-label {
+  font-size: .8em;
+	padding-top: 0.3em;
+  color: var(--primary-color);
+  text-transform: none;
+}
+
+.user-information {
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.user-details {
+  display: flex;
+}
+
+.section-heading {
+  padding-top: 5px;
+  color: var(--primary-color);
+}
+
+button.return {
+  padding: 10px;
+	border: solid 1px var(--primary-color);
+	background: var(--primary-color);
+	color: white;
+	cursor: pointer;
+  width: 100%;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+button.return:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 500px) {
+  .user-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-description, .user-company {
+    padding: 0 1em;
+    width: inherit;
+  }
+
+  .user-company {
+    border-top: 1px solid var(--accent-color);
+    border-left: 0;
+  }
+}

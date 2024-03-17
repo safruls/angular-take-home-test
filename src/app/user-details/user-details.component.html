@@ -1,0 +1,100 @@
+<article class="card">
+  <ng-container *ngIf="isLoading">
+    <h2 class="user-heading">
+      <app-skeleton-loader></app-skeleton-loader>
+      <app-skeleton-loader></app-skeleton-loader>
+      <app-skeleton-loader></app-skeleton-loader>
+    </h2>
+    <section class="user-details">
+      <section class="user-description">
+        <h2 class="section-heading">Personal Information</h2>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+      </section>
+      <section class="user-company">
+        <h2 class="section-heading">Company Information</h2>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+        <div class="user-information">
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+          <app-skeleton-loader></app-skeleton-loader>
+        </div>
+      </section>
+    </section>
+  </ng-container>
+  <ng-container *ngIf="!isLoading && errorMessage">
+    <div>{{ errorMessage }}</div>
+  </ng-container>
+  <ng-container *ngIf="!isLoading && !errorMessage">
+    <h2 class="user-heading">{{user?.name}}</h2>
+    <section class="user-details">
+      <section class="user-description">
+        <h2 class="section-heading">Personal Information</h2>
+        <div class="user-information">
+          <label class="user-label">Username: </label>
+          <p>{{user?.username}}</p>
+        </div>
+        <div class="user-information">
+          <label class="user-label">Phone: </label>
+          <p>{{user?.['phone']}}</p>
+        </div>
+        <div class="user-information">
+          <label class="user-label">Email: </label>
+          <p>{{user?.email}}</p>
+        </div>
+        <div class="user-information">
+          <label class="user-label">Website: </label>
+          <p>{{user?.['website']}}</p>
+        </div>
+        <div class="user-information">
+          <label class="user-label">Address: </label>
+          <p>{{user?.['address']?.['street']}}, {{user?.['address']?.['suite']}}</p>
+          <p>{{user?.['address']?.['city']}}, {{user?.['address']?.['zipcode']}}</p>
+          <p>Lat. {{user?.['address']?.['geo']?.['lat']}}, Long. {{user?.['address']?.['geo']?.['lng']}}</p>
+        </div>
+      </section>
+      <section class="user-company">
+        <h2 class="section-heading">Company Information</h2>
+        <div class="user-information">
+          <label class="user-label">Name: </label>
+          <p>{{user?.['company']?.['name']}}</p>
+        </div>
+        <div class="user-information">
+          <label class="user-label">Catch Phrase: </label>
+          <p>{{user?.['company']?.['catchPhrase']}}</p>
+        </div>
+        <div class="user-information">
+          <label class="user-label">BS: </label>
+          <p>{{user?.['company']?.['bs']}}</p>
+        </div>
+      </section>
+    </section>
+  </ng-container>
+  <button class="return" type="button" [routerLink]="'/'">Go back to users list</button>
+</article>
