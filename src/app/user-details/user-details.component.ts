@@ -15,7 +15,6 @@ import { UserService } from '../user.service';
 })
 export class UserDetailsComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute)
-  userId = -1
   userService = inject(UserService)
   user: User | undefined
   isLoading: boolean = false
@@ -26,11 +25,12 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true
     const userId = Number(this.route.snapshot.params['id'])
-    this.userService.getUserById(userId).then(userById => {
-      this.user = userById
-    }).catch(err => {
-      this.errorMessage = 'An error occurred while fetching data';
-      console.log('Error:', err);
+    this.userService.getUserById(userId).then(resp => {
+      if ((resp as User).id) {
+        this.user = resp as User
+      } else {
+        this.errorMessage = `An error occurred while fetching data. Error code: ${resp.status}`
+      };
     }).finally(() => this.isLoading = false)
   }
 }

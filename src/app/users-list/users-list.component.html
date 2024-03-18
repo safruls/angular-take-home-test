@@ -36,8 +36,10 @@
 				</td>
 			</tr>
 		</ng-container>
-		<ng-container *ngIf="!isLoading && errorMessage">
-			<div>{{ errorMessage }}</div>
+		<ng-container *ngIf="!!errorMessage">
+			<tr>
+				<td id="error-message">{{ errorMessage }}</td>
+			</tr>
 		</ng-container>
 		<ng-container *ngIf="!isLoading && !errorMessage">
 			<tr *ngFor="let user of users">
