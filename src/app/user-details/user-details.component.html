@@ -49,7 +49,7 @@
     </section>
   </ng-container>
   <ng-container *ngIf="!!errorMessage">
-    <h2 class="user-heading" id="error-message-in-details-page">{{ errorMessage }}</h2>
+    <h2 class="user-heading no-transform" id="error-message-in-details-page">{{ errorMessage }}</h2>
   </ng-container>
   <ng-container *ngIf="!isLoading && !errorMessage">
     <h2 class="user-heading">{{user?.name}}</h2>
