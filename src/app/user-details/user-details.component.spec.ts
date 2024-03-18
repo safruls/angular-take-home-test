@@ -41,7 +41,7 @@ describe('UserDetailsComponent', () => {
   });
 })
 
-describe('When the component is loading', () => {
+describe('When the UserDetailsComponent is loading', () => {
   let component: UserDetailsComponent;
   let fixture: ComponentFixture<UserDetailsComponent>;
 
@@ -60,5 +60,30 @@ describe('When the component is loading', () => {
   it('the skeleton loader should be displayed', () => {
     const element: HTMLElement = fixture.nativeElement;
     expect(element.querySelector('div.skeleton')).toBeTruthy();
+  });
+});
+
+describe('When the UserDetailsComponent displays error message', () => {
+  let component: UserDetailsComponent;
+  let fixture: ComponentFixture<UserDetailsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [UserDetailsComponent, RouterModule.forRoot([])]
+    })
+    .compileComponents();
+    
+    fixture = TestBed.createComponent(UserDetailsComponent);
+    component = fixture.componentInstance;
+    component.errorMessage = 'An error occurred while fetching data';
+    component.isLoading = false;
+    fixture.detectChanges();
+  });
+
+  it('the errorMessage should be displayed', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const error = element.querySelector('#error-message-in-details-page');
+    expect(error).toBeTruthy();
+    expect(error?.textContent).toContain(component.errorMessage);
   });
 });

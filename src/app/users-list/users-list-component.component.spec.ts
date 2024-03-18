@@ -68,7 +68,7 @@ describe('UserListComponent', () => {
   });
 });
 
-describe('When the component is loading', () => {
+describe('When the UserListComponent is loading', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
 
@@ -87,5 +87,30 @@ describe('When the component is loading', () => {
   it('the skeleton loader should be displayed', () => {
     const element: HTMLElement = fixture.nativeElement;
     expect(element.querySelector('div.skeleton')).toBeTruthy();
+  });
+});
+
+describe('When the UserListComponent displays error message', () => {
+  let component: UserListComponent;
+  let fixture: ComponentFixture<UserListComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [UserListComponent]
+    })
+    .compileComponents();
+    
+    fixture = TestBed.createComponent(UserListComponent);
+    component = fixture.componentInstance;
+    component.errorMessage = 'An error occurred while fetching data';
+    component.isLoading = false;
+    fixture.detectChanges();
+  });
+
+  it('the errorMessage should be displayed', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const error = element.querySelector('#error-message');
+    expect(error).toBeTruthy();
+    expect(error?.textContent).toContain(component.errorMessage);
   });
 });
